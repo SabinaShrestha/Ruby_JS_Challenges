@@ -56,17 +56,23 @@ document.getElementById('vowel_count').addEventListener('click', function(){
 
 
 document.getElementById('prime_check').addEventListener('click', function(){
-  var input = document.getElementById('get_input').value
+  var input = parseInt(document.getElementById('get_input').value)
   var checks = [2,3,4,5,6,7,8,9,10,11,12]
+  var n
   for (var i = 0; i < checks.length; i++){
-    if (input === checks[i]){
-      input
-    } else if (input % checks[i] === 0){
-      document.getElementById('result').value = "Not a Prime Number"
-    } else {
-      document.getElementById('result').value = "It is a prime Number"
+    if (input !== checks[i]){
+      if (input % checks[i] === 0){
+        n = 0
+        break
+      }
+    }else {
+       n = 1
     }
-    debugger
   }
 
+  if(n === 0){
+    document.getElementById('result').innerHTML = "Not a Prime"
+  } else {
+    document.getElementById('result').innerHTML = "Prime"
+  }
 })
